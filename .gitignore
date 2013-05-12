@@ -3,6 +3,7 @@
 !.gitconfig
 !.bashrc
 !.bash_profile
+!.irbrc
 !.ssh/config
 !.ssh/github_rsa.pub
 !.ssh/bitbucket_rsa.pub
