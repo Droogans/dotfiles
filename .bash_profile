@@ -1,0 +1,79 @@
+alias less='less -R'
+
+alias ~='cd ~'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias clj='lein repl'
+alias cp='cp -i'
+alias cpr='cp -ir'
+alias emacs='emacs -nw --no-splash'
+alias ll='ls -lAh --color --group-directories-first'
+alias ln='ln -is'
+alias ls='ls -lh --color --group-directories-first'
+alias lr='ls -Rlh --color --group-directories-first | less'
+alias llr='ls -RlAh --color --group-directories-first | less'
+alias minty='archey'
+alias mkdir='mkdir -pv'
+alias mv='mv -i'
+alias rm='rm -I --preserve-root'
+alias rmr='rm -rI'
+alias sudo='sudo '
+alias x='exit; exit' 
+alias wifireset='rfkill block wifi; sleep 1; rfkill unblock wifi'
+
+fortune | cowsay
+df -h | grep -e Filesystem -e /dev/sda1 -e /dev/sdc1
+echo -en "\033[38;5;12mDropbox\033[39m: "; dropbox status
+
+export EDITOR=emacs
+
+[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+SSH_ENV="$HOME/.ssh/environment"
+  
+# start the ssh-agent
+function start_agent {
+    echo "Initializing new SSH agent..."
+    # spawn ssh-agent
+    ssh-agent | sed 's/^echo/#echo/' > "$SSH_ENV"
+    echo succeeded
+    chmod 600 "$SSH_ENV"
+    . "$SSH_ENV" > /dev/null
+    ssh-add
+}
+  
+# test for identities
+function test_identities {
+    # test whether standard identities have been added to the agent already
+    ssh-add -l | grep "The agent has no identities" > /dev/null
+    if [ $? -eq 0 ]; then
+        ssh-add
+        # $SSH_AUTH_SOCK broken so we start a new proper agent
+        if [ $? -eq 2 ];then
+            start_agent
+        fi
+    fi
+}
+  
+# check for running ssh-agent with proper $SSH_AGENT_PID
+if [ -n "$SSH_AGENT_PID" ]; then
+    ps -ef | grep "$SSH_AGENT_PID" | grep ssh-agent > /dev/null
+    if [ $? -eq 0 ]; then
+    test_identities
+    fi
+# if $SSH_AGENT_PID is not properly set, we might be able to load one from
+# $SSH_ENV
+else
+    if [ -f "$SSH_ENV" ]; then
+    . "$SSH_ENV" > /dev/null
+    fi
+    ps -ef | grep "$SSH_AGENT_PID" | grep -v grep | grep ssh-agent > /dev/null
+    if [ $? -eq 0 ]; then
+        test_identities
+    else
+        start_agent
+    fi
+fi

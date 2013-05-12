@@ -1,0 +1,10 @@
+[user]
+        name = Droogans
+        email = droogans@gmail.com
+[merge]
+        tool = p4merge
+[mergetool "p4merge"]
+        cmd = p4merge $BASE $LOCAL $REMOTE $MERGED
+        trustExitCode = True
+        keepBackup = false
+        keepTemporaries = false

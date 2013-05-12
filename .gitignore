@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.gitconfig
+!.bashrc
+!.bash_profile
+!.ssh/config
+!.ssh/github_rsa.pub
+!.ssh/bitbucket_rsa.pub
