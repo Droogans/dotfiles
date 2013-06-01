@@ -8,3 +8,6 @@
         trustExitCode = True
         keepBackup = false
         keepTemporaries = false
+[color]
+	diff = auto
+	status = auto
