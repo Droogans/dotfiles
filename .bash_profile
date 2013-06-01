@@ -1,28 +1,4 @@
-alias less='less -R'
-
-alias ~='cd ~'
-alias cd..='cd ..'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias cld='colordiff'
-alias clj='lein repl'
-alias cp='cp -i'
-alias cpr='cp -ir'
-alias emacs='emacs -nw --no-splash'
-alias ll='ls -lAh --color --group-directories-first'
-alias ln='ln -is'
-alias ls='ls -lh --color --group-directories-first'
-alias lr='ls -Rlh --color --group-directories-first | less'
-alias llr='ls -RlAh --color --group-directories-first | less'
-alias minty='archey'
-alias mkdir='mkdir -pv'
-alias mv='mv -i'
-alias rm='rm -I --preserve-root'
-alias rmr='rm -rI'
-alias sudo='sudo '
-alias x='exit; exit' 
-alias wifireset='rfkill block wifi; sleep 1; rfkill unblock wifi'
+source ~/.bash_aliases
 
 fortune | cowsay
 df -h | grep -e Filesystem -e /dev/sda1 -e /dev/sdc1
