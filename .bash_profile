@@ -5,6 +5,7 @@ df -h | grep -e Filesystem -e /dev/sda1 -e /dev/sdc1
 echo -en "\033[38;5;12mDropbox\033[39m: "; dropbox status
 
 export EDITOR=emacs
+export NODE_PATH=/usr/sbin/node
 
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
