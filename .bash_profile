@@ -11,6 +11,7 @@ export NODE_PATH=/usr/sbin/node
 
 
 SSH_ENV="$HOME/.ssh/environment"
+export SSH_AUTH_SOCK=0
   
 # start the ssh-agent
 function start_agent {
