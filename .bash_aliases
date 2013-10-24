@@ -16,8 +16,8 @@ alias lr='ls -Rlh | less'
 alias llr='ls -RlAh | less'
 alias mkdir='mkdir -pv'
 alias mv='mv -i'
-alias rm='rm --preserve-root'
-alias rmr='rm -r'
+alias rm='rm'
+alias rmr='rm -Rf'
 alias sudo='sudo '
 
 export CLICOLOR=1
