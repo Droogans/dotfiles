@@ -4,7 +4,8 @@ source ~/.git-prompt.sh
 export EDITOR=emacs
 export NODE_PATH=/usr/sbin/node
 
-[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 SSH_ENV="$HOME/.ssh/environment"
 export SSH_AUTH_SOCK=0
