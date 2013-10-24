@@ -6,21 +6,22 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cld='colordiff'
-alias clj='lein repl'
 alias cp='cp -i'
 alias cpr='cp -ir'
 alias emacs='emacs --no-splash'
-alias ll='ls -lAh --color --group-directories-first'
+alias ll='ls -lAh'
 alias ln='ln -is'
-alias ls='ls -lh --color --group-directories-first'
-alias lr='ls -Rlh --color --group-directories-first | less'
-alias llr='ls -RlAh --color --group-directories-first | less'
-alias minty='archey'
+alias ls='ls -lh'
+alias lr='ls -Rlh | less'
+alias llr='ls -RlAh | less'
 alias mkdir='mkdir -pv'
 alias mv='mv -i'
-alias rm='rm -I --preserve-root'
-alias rmr='rm -rI'
+alias rm='rm --preserve-root'
+alias rmr='rm -r'
 alias sudo='sudo '
+
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
