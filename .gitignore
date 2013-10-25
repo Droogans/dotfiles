@@ -4,6 +4,7 @@
 !.bashrc
 !.bash_profile
 !.bash_aliases
+!.inputrc
 !.irbrc
 !.ssh/config
 !.ssh/github_rsa.pub
