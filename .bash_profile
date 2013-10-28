@@ -1,7 +1,7 @@
 source ~/.bash_aliases
 source ~/.git-prompt.sh
 
-export EDITOR=emacs
+export EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
 export NODE_PATH=/usr/sbin/node
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
