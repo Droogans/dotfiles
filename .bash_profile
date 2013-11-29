@@ -3,6 +3,7 @@ source ~/.git-prompt.sh
 
 export EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
 export NODE_PATH=/usr/sbin/node
+export NOEXEC_EXCLUDE="compass"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
