@@ -6,6 +6,7 @@ echo -en "\033[38;5;12mDropbox\033[39m: "; dropbox status
 
 export EDITOR=emacs
 export NODE_PATH=/usr/sbin/node
+export NOEXEC_EXCLUDE="compass"
 
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
