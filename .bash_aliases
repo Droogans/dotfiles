@@ -9,6 +9,7 @@ alias cld='colordiff'
 alias cp='cp -i'
 alias cpr='cp -ir'
 alias emacs='emacs --no-splash'
+alias gitlg="git lg | awk '{print NR,\$0}' | less"
 alias ll='ls -lAh'
 alias ln='ln -is'
 alias ls='ls -lh'
