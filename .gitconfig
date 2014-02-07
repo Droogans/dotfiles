@@ -19,14 +19,13 @@
 [color "diff"]
         meta = yellow
         frag = white dim
-        old = magenta
+        old = red
         new = cyan
         whitespace = white reverse
 [color "status"]
-        added = green
+        added = cyan
         changed = red
-        untracked = cyan
-        branch = magenta
+        untracked = yellow
 [alias]
         st = status -sb
         ci = commit
