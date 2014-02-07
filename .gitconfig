@@ -11,16 +11,32 @@
 [color]
 	diff = auto
 	status = auto
+        branch = auto
+[color "branch"]
+        current = cyan
+        local = yellow
+        remote = magenta
+[color "diff"]
+        meta = yellow
+        frag = white dim
+        old = magenta
+        new = cyan
+        whitespace = white reverse
+[color "status"]
+        added = green
+        changed = red
+        untracked = cyan
+        branch = magenta
 [alias]
-    st = status -sb
-    ci = commit
-    br = branch
-    co = checkout
-    df = diff
-    dfc = diff --cached
-    ready = rebase -i @{u}
-    lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author `git config user.email`
-    purr = pull --rebase
+        st = status -sb
+        ci = commit
+        br = branch
+        co = checkout
+        df = diff
+        dfc = diff --cached
+        ready = rebase -i @{u}
+        lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author `git config user.email`
+        purr = pull --rebase
 [push]
 	default = current
