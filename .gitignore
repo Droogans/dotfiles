@@ -9,3 +9,4 @@
 !.ssh/config
 !.ssh/github_rsa.pub
 !.ssh/bitbucket_rsa.pub
+!code/sh/
