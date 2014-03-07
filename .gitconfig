@@ -22,7 +22,7 @@
 [alias]
         st = status -sb
         ci = commit
-        br = branch
+        br = branch -a
         co = checkout
         df = diff
         dfc = diff --cached
