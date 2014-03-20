@@ -1,4 +1,6 @@
 source ~/.bash_aliases
+source ~/.git-prompt.sh
+source ~/.git-completion.sh
 
 fortune | cowsay
 df -h | grep -e Filesystem -e /dev/sda1 -e /dev/sdc1

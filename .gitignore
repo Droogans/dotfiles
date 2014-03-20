@@ -6,7 +6,5 @@
 !.bash_aliases
 !.inputrc
 !.irbrc
-!.ssh/config
-!.ssh/github_rsa.pub
-!.ssh/bitbucket_rsa.pub
 !code/sh/
+!.git-completion.sh
