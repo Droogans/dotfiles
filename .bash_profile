@@ -1,5 +1,6 @@
 source ~/.bash_aliases
 source ~/.git-prompt.sh
+source ~/.git-completion.sh
 
 export EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
 export NODE_PATH=/usr/sbin/node:/usr/local/lib/node_modules
