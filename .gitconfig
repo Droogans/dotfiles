@@ -22,6 +22,7 @@
 [alias]
         st = status -sb
         ci = commit
+        rip = commit -a --amend --no-edit
         br = branch -a --no-merged
         co = checkout
         df = diff
