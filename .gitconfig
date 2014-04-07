@@ -23,6 +23,7 @@
         st = status -sb
         ci = commit
         rip = commit -a --amend --no-edit
+        split = reset HEAD^
         br = branch -a --no-merged
         co = checkout
         df = diff
