@@ -2,8 +2,8 @@
         name = Droogans
         email = droogans@gmail.com
 [color]
-	diff = auto
-	status = auto
+        diff = auto
+        status = auto
         branch = auto
 [color "branch"]
         current = cyan
@@ -34,4 +34,4 @@
         purr = pull --rebase
         pull = pull --rebase
 [push]
-	default = current
+        default = current
