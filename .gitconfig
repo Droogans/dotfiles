@@ -32,5 +32,6 @@
         lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author `git config user.email`
         purr = pull --rebase
+        pull = pull --rebase
 [push]
 	default = current
