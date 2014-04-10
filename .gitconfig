@@ -23,6 +23,7 @@
         br = branch -a --no-merged
         ci = commit
         co = checkout
+        cp = cherry-pick
         df = diff
         dfc = diff --cached
         lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
