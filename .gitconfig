@@ -31,7 +31,7 @@
         purr = pull --rebase
         read = !git lg -1 -p
         ready = rebase -i @{u}
-        rip = commit -a --amend --no-edit
+        rip = commit --amend --no-edit
         split = reset HEAD^
         st = status -sb
         standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author `git config user.email`
