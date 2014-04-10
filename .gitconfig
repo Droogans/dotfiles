@@ -20,19 +20,19 @@
         changed = red
         untracked = yellow
 [alias]
-        st = status -sb
-        ci = commit
-        rip = commit -a --amend --no-edit
-        split = reset HEAD^
         br = branch -a --no-merged
+        ci = commit
         co = checkout
         df = diff
         dfc = diff --cached
-        ready = rebase -i @{u}
         lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author `git config user.email`
-        purr = pull --rebase
         pull = pull --rebase
+        purr = pull --rebase
         read = !git lg -1 -p
+        ready = rebase -i @{u}
+        rip = commit -a --amend --no-edit
+        split = reset HEAD^
+        st = status -sb
+        standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author `git config user.email`
 [push]
         default = current
