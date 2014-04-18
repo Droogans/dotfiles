@@ -30,10 +30,12 @@
         pull = pull --rebase
         purr = pull --rebase
         read = !git lg -1 -p
+        recap = show --pretty="format:" --name-status HEAD
         ready = rebase -i @{u}
         rip = commit --amend --no-edit
         split = reset HEAD^
         st = status -sb
-        standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author `git config user.email`
+        standup = !git lg --since yesterday --author `git config user.email`
+        update = !git pull --rebase upstream master && git push origin master
 [push]
         default = current
