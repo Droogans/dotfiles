@@ -31,7 +31,6 @@
         purr = pull --rebase
         read = !git lg -1 -p
         recap = show --pretty="format:" --name-status HEAD
-        ready = rebase -i @{u}
         rip = commit --amend --no-edit
         split = reset HEAD^
         st = status -sb
