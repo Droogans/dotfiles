@@ -36,6 +36,6 @@
         split = reset HEAD^
         st = status -sb
         standup = !git lg --since yesterday --author `git config user.email`
-        update = !git pull --rebase upstream master && git push origin master
+        update = !git fetch --all --prune && git pull --rebase upstream master && git push origin master
 [push]
         default = current
