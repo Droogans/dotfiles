@@ -27,6 +27,7 @@
         df = diff
         dfc = diff --cached
         lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        origin = push origin -q
         pull = pull --rebase
         purr = pull --rebase
         read = !git lg -1 -p
@@ -36,5 +37,6 @@
         st = status -sb
         standup = !git lg --since yesterday --author `git config user.email`
         update = !git fetch --all --prune && git pull --rebase upstream master && git push origin master
+        upstream = push upstream -q
 [push]
         default = current
