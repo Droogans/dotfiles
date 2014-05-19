@@ -30,7 +30,7 @@
         origin = push origin -q
         pull = pull --rebase
         purr = pull --rebase
-        read = !git lg -1 -p
+        read = log -1 -p
         recap = show --pretty="format:" --name-status HEAD
         rip = commit --amend --no-edit
         split = reset HEAD^
