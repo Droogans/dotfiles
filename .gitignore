@@ -9,3 +9,4 @@
 !code/sh/
 !.git-completion.sh
 !.jscsrc
+!.npmrc
