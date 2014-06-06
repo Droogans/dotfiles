@@ -21,6 +21,7 @@
         untracked = yellow
 [alias]
         aa = add -A
+        ap = apply --check # diff.patch
         br = branch -a --no-merged
         ci = commit
         cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
@@ -28,6 +29,7 @@
         cp = cherry-pick
         df = diff
         dfc = diff --cached
+        fp = format-patch
         lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         origin = push origin -q
         pull = pull --rebase
@@ -35,6 +37,8 @@
         read = log -1 -p
         recap = show --pretty="format:" --name-status HEAD
         rip = commit --amend --no-edit
+        so = !git am -3 --signoff < # diff.patch
+        sor = am --resolved
         split = reset HEAD^
         st = status -sb
         standup = !git lg --since yesterday --author `git config user.email`
