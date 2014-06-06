@@ -46,3 +46,5 @@
         upstream = push upstream -q
 [push]
         default = current
+[core]
+	editor = /Applications/Emacs.app/Contents/MacOS/bin/emacsclient

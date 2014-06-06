@@ -2,7 +2,7 @@ source ~/.bash_aliases
 source ~/.git-prompt.sh
 source ~/.git-completion.sh
 
-export EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
+export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 export NODE_PATH=/usr/sbin/node:/usr/local/lib/node_modules
 export NOEXEC_EXCLUDE="compass"
 
