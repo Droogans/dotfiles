@@ -20,7 +20,7 @@ alias lr='ls -Rlh | less'
 alias llr='ls -RlAh | less'
 alias mkdir='mkdir -pv'
 alias mv='mv -i'
-alias rm='rm'
+alias rm='trash'
 alias rmr='rm -Rf'
 alias sudo='sudo '
 
