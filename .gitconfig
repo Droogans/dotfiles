@@ -2,9 +2,7 @@
         name = Droogans
         email = droogans@gmail.com
 [color]
-        diff = auto
-        status = auto
-        branch = auto
+        ui = always
 [color "branch"]
         current = cyan
         local = yellow
@@ -34,7 +32,7 @@
         origin = push origin -q
         pull = pull --rebase
         purr = pull --rebase
-        read = log -1 -p
+        read = show
         recap = show --pretty="format:" --name-status HEAD
         rip = commit --amend --no-edit
         so = !git am -3 --signoff < # diff.patch
@@ -42,11 +40,12 @@
         split = reset HEAD^
         st = status -sb
         standup = !git lg --since yesterday --author `git config user.email`
-        update = !git fetch --all --prune && git pull --rebase upstream master && git push origin master && git cleanup
+        update = !git fetch --all --prune && git cleanup && git pull --rebase upstream master && git push origin master
         upstream = push upstream -q
 [push]
         default = current
 [core]
-	editor = /Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+        editor = /Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+        pager = cat
 [url "https://"]
-	insteadOf = git://
+        insteadOf = git://

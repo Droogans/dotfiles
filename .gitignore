@@ -11,3 +11,6 @@
 !.jscsrc
 !.npmrc
 !Brewfile
+!.emacs_bash
+!.el4r
+!.el4rrc.rb
