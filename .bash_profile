@@ -4,7 +4,6 @@ source ~/.git-completion.sh
 
 export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 export NODE_PATH=/usr/sbin/node:/usr/local/lib/node_modules
-export NODE_NO_READLINE=1
 export NOEXEC_EXCLUDE="compass"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
