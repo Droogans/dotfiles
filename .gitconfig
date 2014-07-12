@@ -28,7 +28,7 @@
         df = diff
         dfc = diff --cached
         fp = format-patch
-        lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        lg = log --pretty=tformat:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         origin = push origin -q
         pull = pull --rebase
         purr = pull --rebase
