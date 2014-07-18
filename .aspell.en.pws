@@ -1,9 +1,10 @@
-personal_ws-1.1 en 46 
+personal_ws-1.1 en 47 
 multiplayer
 catenate
 ip
 utf
 http
+urls
 javascript
 png
 repo
@@ -38,8 +39,8 @@ json
 username
 py
 github
-Github
 auth
+SHA
 resize
 dev
 regex
