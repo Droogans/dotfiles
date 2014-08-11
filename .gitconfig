@@ -33,7 +33,7 @@
         pull = pull --rebase
         purr = pull --rebase
         read = show
-        recap = show --pretty="format:" --name-status HEAD
+        recap = diff --stat HEAD HEAD~1
         rip = commit --amend --no-edit
         so = !git am -3 --signoff < # diff.patch
         sor = am --resolved
