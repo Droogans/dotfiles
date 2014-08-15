@@ -33,4 +33,3 @@ install tmux
 install trash
 install tree
 install xz
-install zsh
