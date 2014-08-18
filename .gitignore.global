@@ -1,3 +1,4 @@
 # emacs temporary backup files
 \.#*
 .DS_Store
+*.notes
