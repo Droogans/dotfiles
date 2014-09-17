@@ -6,7 +6,7 @@ export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 export NODE_PATH=/usr/sbin/node:/usr/local/lib/node_modules
 export NOEXEC_EXCLUDE="compass"
 
-launchctl limit maxfiles 10480 10480
+launchctl limit maxfiles 104800 104800
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
