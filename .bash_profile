@@ -4,7 +4,6 @@ source ~/.git-completion.sh
 
 fortune | cowsay
 df -h | grep -e Filesystem -e /dev/sda1 -e /dev/sdc1
-echo -en "\033[38;5;12mDropbox\033[39m: "; dropbox status
 
 export EDITOR=emacs
 export NODE_PATH=/usr/sbin/node
