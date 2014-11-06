@@ -24,6 +24,7 @@ alias mv='mv -i'
 alias rm='rm -I --preserve-root'
 alias rmr='rm -rI'
 alias sudo='sudo '
+alias top=htop
 
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
