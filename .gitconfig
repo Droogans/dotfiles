@@ -47,7 +47,6 @@
         default = current
 [core]
         editor = /Applications/Emacs.app/Contents/MacOS/bin/emacsclient
-        pager = cat
         excludesfile = ~/.gitignore.global
 [url "https://"]
         insteadOf = git://
