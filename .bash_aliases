@@ -23,6 +23,8 @@ alias mv='mv -i'
 alias rm='trash'
 alias rmr='rm -Rf'
 alias sudo='sudo '
+alias tmuxd='tmux new -s default'
+alias tmuxa='tmux attach -t default'
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
