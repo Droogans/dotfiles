@@ -11,10 +11,11 @@ export NOEXEC_EXCLUDE="compass"
 
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+shopt -s dotglob
 
 SSH_ENV="$HOME/.ssh/environment"
 export SSH_AUTH_SOCK=0
-  
+
 # start the ssh-agent
 function start_agent {
     echo "Initializing new SSH agent..."
@@ -25,7 +26,7 @@ function start_agent {
     . "$SSH_ENV" > /dev/null
     ssh-add
 }
-  
+
 # test for identities
 function test_identities {
     # test whether standard identities have been added to the agent already
@@ -38,7 +39,7 @@ function test_identities {
         fi
     fi
 }
-  
+
 # check for running ssh-agent with proper $SSH_AGENT_PID
 if [ -n "$SSH_AGENT_PID" ]; then
     ps -ef | grep "$SSH_AGENT_PID" | grep ssh-agent > /dev/null
