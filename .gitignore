@@ -11,3 +11,4 @@
 !.jscsrc
 !.npmrc
 !code/sh/
+!.tmux.conf

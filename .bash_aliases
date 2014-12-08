@@ -25,6 +25,8 @@ alias rm='rm -I --preserve-root'
 alias rmr='rm -rI'
 alias sudo='sudo '
 alias top=htop
+alias tmuxd='tmux new -s default'
+alias tmuxa='tmux attach -t default'
 
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
