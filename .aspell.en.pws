@@ -1,10 +1,11 @@
-personal_ws-1.1 en 56 
+personal_ws-1.1 en 60 
 SHA
 login
 py
 queuer
 refactoring
 resize
+superset
 http
 async
 json
@@ -21,6 +22,7 @@ racker
 queueview
 assignee
 usr
+checkbox
 commenter
 fi
 falsey
@@ -31,6 +33,7 @@ printf
 uncomment
 mergable
 catenate
+unselect
 username
 rebasing
 workflow
@@ -50,6 +53,7 @@ rebase
 versioning
 hyperlinked
 Rackspace
+checkboxes
 api
 repo
 urls
