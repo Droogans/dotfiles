@@ -1,4 +1,4 @@
-personal_ws-1.1 en 60 
+personal_ws-1.1 en 62 
 SHA
 login
 py
@@ -24,6 +24,7 @@ assignee
 usr
 checkbox
 commenter
+undismissable
 fi
 falsey
 tooltip
@@ -38,6 +39,7 @@ username
 rebasing
 workflow
 ip
+dismissable
 reindent
 namespaced
 png
