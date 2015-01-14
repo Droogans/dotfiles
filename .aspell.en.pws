@@ -1,4 +1,4 @@
-personal_ws-1.1 en 62 
+personal_ws-1.1 en 66 
 SHA
 login
 py
@@ -30,8 +30,11 @@ falsey
 tooltip
 lodash
 chai
+deliverables
 printf
 uncomment
+assignees
+assignee's
 mergable
 catenate
 unselect
@@ -58,6 +61,7 @@ Rackspace
 checkboxes
 api
 repo
+onboarding
 urls
 invokable
 params
