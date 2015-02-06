@@ -1,4 +1,4 @@
-personal_ws-1.1 en 67 
+personal_ws-1.1 en 68 
 SHA
 login
 py
@@ -20,21 +20,22 @@ dev
 auth
 racker
 queueview
+metadata
+checkbox
 assignee
 usr
-checkbox
 commenter
 undismissable
 fi
 falsey
 tooltip
 lodash
-chai
 deliverables
-printf
-uncomment
+chai
 assignees
 assignee's
+printf
+uncomment
 mergable
 catenate
 unselect
