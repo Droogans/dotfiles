@@ -1,6 +1,7 @@
 source ~/.bash_aliases
 source ~/.git-prompt.sh
 source ~/.git-completion.sh
+source /etc/bash_completion.d/password-store
 
 df -h | grep -e Filesystem -e /dev/sda1 -e /dev/sdc1
 
