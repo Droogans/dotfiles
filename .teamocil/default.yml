@@ -1,0 +1,25 @@
+windows:
+  - name: billing
+    root: ~/code/js/billing-ui
+    layout: main-vertical
+    panes:
+      - clear
+      - clear
+      - clear
+  - name: encore-ui
+    root: ~/code/js/encore-ui
+    layout: main-vertical
+    panes:
+      - clear
+      - clear
+      - clear
+  - name: misc
+    root: ~/notes/
+  - name: sss
+    root: ~/code/js/encore-ui
+    panes:
+      - ./node_modules/.bin/webdriver-manager update; ./node_modules/.bin/webdriver-manager start
+  - name: top
+    root: ~/
+    panes:
+      - sudo htop

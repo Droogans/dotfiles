@@ -13,5 +13,6 @@
 !.irbrc
 !.jscsrc
 !.npmrc
+!.teamocil/default.yml
 !.tmux.conf
 !Brewfile

@@ -23,8 +23,8 @@ alias mv='mv -i'
 alias rm='trash'
 alias rmr='rm -Rf'
 alias sudo='sudo '
-alias tmuxd='tmux new -s default'
-alias tmuxa='tmux attach -t default'
+alias tmuxd='tmux new-session -d "teamocil default" \; attach'
+alias tmuxa='tmux attach -t teamocil'
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
