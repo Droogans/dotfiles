@@ -11,7 +11,7 @@ launchctl limit maxfiles 1024 2048
 ulimit -n 1024
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:$HOME/.android/tools:$HOME/Library/Android/sdk/platform-tools
 
 SSH_ENV="$HOME/.ssh/environment"
 
