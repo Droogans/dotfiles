@@ -22,7 +22,7 @@
         ap = apply --check # diff.patch
         br = branch -a --no-merged
         ci = commit
-        cleanup = "!git branch --no-color --merged | grep  -v 'master' | sed -e 's/^[ \t]*//' | xargs -n 1 git branch -d"
+        cleanup = "!git branch --no-color --merged | grep  -v 'master' | xargs -n 1 git branch -d"
         co = checkout
         cp = cherry-pick
         df = diff
