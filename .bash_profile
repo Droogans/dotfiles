@@ -5,6 +5,7 @@ source /usr/local/etc/bash_completion.d/password-store
 
 export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 export NODE_PATH=/usr/sbin/node:/usr/local/lib/node_modules
+export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
 export NOEXEC_EXCLUDE="compass"
 
 launchctl limit maxfiles 1024 2048
