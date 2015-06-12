@@ -9,6 +9,7 @@
 !.git-prompt.sh
 !.gitconfig
 !.gitignore
+!.gitignore.global
 !.inputrc
 !.irbrc
 !.jscsrc
