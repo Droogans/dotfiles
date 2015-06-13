@@ -24,8 +24,8 @@ alias nmb='PATH=$(npm bin):$PATH'
 alias rm='trash'
 alias rmr='rm -Rf'
 alias sudo='sudo '
-alias tmuxd='tmux new-session -d "teamocil default" \; attach'
-alias tmuxa='tmux attach -t teamocil'
+alias tmuxd='tmux new-session -s default -d; tmux send-keys -t default:bash.0 "teamocil default" C-j; tmux attach -t default'
+alias tmuxa='tmux attach -t default'
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
