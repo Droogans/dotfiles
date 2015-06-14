@@ -42,7 +42,7 @@
         st = status -sb
         standup = !git lg --since yesterday --author `git config user.email`
         swap = "!git stash; git checkout master; git checkout -b $1; git stash pop;"
-        update = "!git fetch --all --prune; git cleanup; git pull --rebase upstream master; git push origin master"
+        update = "![ `git st | wc -l` -gt 1 ] && echo "Clean working state required." && exit 1; git co master; git fetch --all --prune; git cleanup; [[ `git remote` == 'origin' ]] && git purr origin master && exit 0; git purr upstream master; git origin"
         upstream = push upstream -q
 [push]
         default = current
