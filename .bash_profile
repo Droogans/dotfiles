@@ -5,7 +5,7 @@ source /usr/local/etc/bash_completion.d/password-store
 
 export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 export NODE_PATH=/usr/sbin/node:/usr/local/lib/node_modules
-export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export NOEXEC_EXCLUDE="compass"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
