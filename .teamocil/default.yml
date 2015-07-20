@@ -1,6 +1,6 @@
 windows:
-  - name: billing
-    root: ~/code/js/billing-ui
+  - name: vcenter
+    root: ~/code/js/vcenter-ui
     layout: main-vertical
     panes:
       - clear
