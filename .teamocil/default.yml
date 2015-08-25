@@ -1,6 +1,6 @@
 windows:
-  - name: vcenter
-    root: ~/code/js/vcenter-ui
+  - name: phone
+    root: ~/code/js/encore-phone-ui
     layout: main-vertical
     panes:
       - clear
