@@ -44,6 +44,8 @@
         swap = "!git stash; git checkout master; git checkout -b $1; git stash pop;"
         update = "![ `git st | wc -l` -gt 1 ] && echo "Clean working state required." && exit 1; git co master; git fetch --all --prune; git cleanup; [[ `git remote` == 'origin' ]] && git purr origin master && exit 0; git purr upstream master; git origin"
         upstream = push upstream -q
+        use-master = "checkout --ours" # files
+        use-branch = "checkout --theirs" # files
 [push]
         default = current
 [core]
@@ -52,6 +54,6 @@
 [url "https://"]
         insteadOf = git://
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+        clean = git-lfs clean %f
+        smudge = git-lfs smudge %f
+        required = true
