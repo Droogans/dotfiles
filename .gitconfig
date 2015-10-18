@@ -48,5 +48,4 @@
         default = current
 [core]
         editor = emacsclient
-        pager = cat
         excludesfile = ~/.gitignore.global
