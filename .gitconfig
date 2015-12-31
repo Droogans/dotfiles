@@ -33,7 +33,7 @@
         pull = pull --rebase
         purr = pull --rebase
         read = show
-        recap = diff --stat HEAD HEAD~1
+        recap = !git diff --stat ${1-HEAD} ${1-HEAD}~1
         rip = commit --amend --no-edit
         sbt = subtree push --prefix # app|dist origin gh-pages
         so = !git am -3 --signoff < # diff.patch
