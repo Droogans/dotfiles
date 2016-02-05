@@ -1,16 +1,14 @@
 windows:
   - name: phone
     root: ~/code/js/encore-phone-ui
-    layout: main-vertical
+    layout: even-vertical
     panes:
-      - clear
       - clear
       - clear
   - name: encore-ui
     root: ~/code/js/encore-ui
-    layout: main-vertical
+    layout: even-vertical
     panes:
-      - clear
       - clear
       - clear
   - name: misc
