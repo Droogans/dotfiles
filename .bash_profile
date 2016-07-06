@@ -9,6 +9,9 @@ export EDITOR=emacs
 export NODE_PATH=/usr/sbin/node
 export NOEXEC_EXCLUDE="compass"
 
+export NVM_DIR="/home/droogans/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 shopt -s dotglob
