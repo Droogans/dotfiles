@@ -21,6 +21,7 @@ alias llr='ls -RlAh --color --group-directories-first | less'
 alias minty='archey'
 alias mkdir='mkdir -pv'
 alias mv='mv -i'
+function nmb { $(npm bin)/$@; }
 alias rm='rm -I --preserve-root'
 alias rmr='rm -rI'
 alias sudo='sudo '
