@@ -5,9 +5,7 @@ alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-# pip install pygments
-function pcat() { pygmentize -f terminal256 -O style=native -g $1 | less; }
-alias cat=pcat
+alias ack='ack-grep'
 alias cld='colordiff'
 alias clj='lein repl'
 alias cp='cp -i'
