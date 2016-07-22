@@ -5,23 +5,14 @@ alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-# pip install pygments
-function pcat() { pygmentize -f terminal256 -O style=native -g $1 | less; }
-alias cat=pcat
-alias cld='colordiff'
 alias cp='cp -i'
-alias cpr='cp -ir'
 alias emacs=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
-alias gitlg="git lg | awk '{print NR,\$0}' | less"
 alias ll='ls -lAh'
 alias ln='ln -is'
 alias ls='ls -lh'
-alias lr='ls -Rlh | less'
-alias llr='ls -RlAh | less'
 alias mkdir='mkdir -pv'
 alias mv='mv -i'
-alias nmb='PATH=$(npm bin):$PATH'
-alias rmr='rm -Rf'
+function nmb { $(npm bin)/$@; }
 alias sudo='sudo '
 alias tmuxd='tmux new-session -s default -d; tmux send-keys -t default:bash.0 "teamocil default" C-j; tmux attach -t default'
 alias tmuxa='tmux attach -t default'
