@@ -36,6 +36,7 @@
         purr = pull --rebase
         read = log -1 -p
         recap = show --pretty="format:" --name-status HEAD
+        rem = remote -v
         rip = commit --amend --no-edit
         so = !git am -3 --signoff < # diff.patch
         sor = am --resolved
