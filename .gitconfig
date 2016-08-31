@@ -2,7 +2,7 @@
         name = Droogans
         email = droogans@gmail.com
 [color]
-        ui = always
+        ui = true
 [color "branch"]
         current = cyan
         local = yellow
