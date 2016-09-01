@@ -1,6 +1,6 @@
 windows:
-  - name: phone
-    root: ~/code/js/encore-phone-ui
+  - name: origin
+    root: ~/code/js/encore-origin
     layout: even-vertical
     panes:
       - clear
