@@ -8,6 +8,8 @@ export NODE_PATH=/usr/sbin/node:/usr/local/lib/node_modules
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 export NOEXEC_EXCLUDE="compass"
 
+export GOPATH=~/code/go
+
 export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
 
