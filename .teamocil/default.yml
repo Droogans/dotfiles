@@ -14,7 +14,7 @@ windows:
   - name: misc
     root: ~/notes/
   - name: sss
-    root: ~/code/js/encore-ui
+    root: ~/code/js/encore-origin
     panes:
       - ./node_modules/.bin/webdriver-manager update; ./node_modules/.bin/webdriver-manager start
   - name: top
