@@ -7,6 +7,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cp='cp -i'
 alias emacs=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 5 -d ' '); }
 alias ll='ls -lAh'
 alias ln='ln -is'
 alias ls='ls -lh'
