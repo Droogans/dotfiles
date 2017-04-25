@@ -7,6 +7,7 @@ export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 export NODE_PATH=/usr/sbin/node:/usr/local/lib/node_modules
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 export NOEXEC_EXCLUDE="compass"
+export SHELL="/usr/local/bin/bash"
 
 export GOPATH=~/code/go
 
