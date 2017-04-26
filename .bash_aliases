@@ -15,7 +15,7 @@ alias mkdir='mkdir -pv'
 alias mv='mv -i'
 function nmb { $(npm bin)/$@; }
 alias sudo='sudo '
-alias tmuxd='tmux new-session -s default -d; tmux send-keys -t default:bash.0 "teamocil default" C-j; tmux attach -t default'
+alias tmuxd='tmux new-session -s default -d; tmux send-keys -t default:0 "teamocil default" C-j; tmux attach -t default'
 alias tmuxa='tmux attach -t default'
 
 export CLICOLOR=1
