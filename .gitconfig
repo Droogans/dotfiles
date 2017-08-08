@@ -34,6 +34,7 @@
         purr = pull --rebase
         read = show
         recap = !git diff --stat ${1-HEAD} ${1-HEAD}~1
+        reverse = "!git show ${1-HEAD^}..${2-HEAD} | git apply --reverse --3way; git reset ."
         rip = commit --amend --no-edit
         sbt = subtree push --prefix # app|dist origin gh-pages
         so = !git am -3 --signoff < # diff.patch
