@@ -29,6 +29,7 @@
         dfc = diff --cached
         fp = format-patch
         lg = log --pretty=tformat:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n
+        lgs = log --pretty=tformat:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all -S
         origin = push origin -q
         pull = pull --rebase
         purr = pull --rebase
@@ -59,4 +60,6 @@
         smudge = git-lfs smudge %f
         required = true
 [url "https://github.com/"]
-	insteadOf = git://github.com/
+        insteadOf = git://github.com/
+[diff]
+        renameLimit = 9999
