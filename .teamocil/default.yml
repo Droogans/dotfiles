@@ -1,16 +1,16 @@
 windows:
-  - name: origin
-    root: ~/code/js/encore-origin
-    layout: even-vertical
+  - name: helix
+    root: ~/code/js/helix-ui
+    layout: even-horizontal
     panes:
-      - clear
-      - clear
-  - name: encore-ui
-    root: ~/code/js/encore-ui
-    layout: even-vertical
+      - nvm use 7
+      - nvm use 7
+  - name: svr
+    root: ~/code/js/snappit-visual-regression
+    layout: even-horizontal
     panes:
-      - clear
-      - clear
+      - nvm use 8
+      - nvm use 8
   - name: misc
     root: ~/notes/
   - name: sss
