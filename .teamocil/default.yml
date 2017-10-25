@@ -13,10 +13,6 @@ windows:
       - nvm use 8
   - name: misc
     root: ~/notes/
-  - name: sss
-    root: ~/code/js/encore-origin
-    panes:
-      - ./node_modules/.bin/webdriver-manager update; ./node_modules/.bin/webdriver-manager start
   - name: top
     root: ~/
     panes:
