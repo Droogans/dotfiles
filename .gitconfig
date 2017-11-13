@@ -41,6 +41,7 @@
         so = !git am -3 --signoff < # diff.patch
         sor = am --resolved
         split = reset HEAD^
+        sq = !"git reset --soft ${1-master}; git add -A; git commit;"
         st = status -sb
         standup = !git lg --since yesterday --author `git config user.email`
         swap = "!git stash; git checkout master; git checkout -b $1; git stash pop;"
