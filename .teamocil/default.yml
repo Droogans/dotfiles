@@ -3,8 +3,8 @@ windows:
     root: ~/code/js/helix-ui
     layout: even-horizontal
     panes:
-      - nvm use 7
-      - nvm use 7
+      - nvm use 8
+      - nvm use 8
   - name: svr
     root: ~/code/js/snappit-visual-regression
     layout: even-horizontal
