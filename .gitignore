@@ -1,7 +1,9 @@
 *
 !.bash_aliases
 !.bash_profile
-!.bashrc
+!.el4r
+!.el4rrc.rb
+!.emacs_bash
 !.git-completion.sh
 !.gitconfig
 !.gitignore
