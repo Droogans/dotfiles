@@ -11,8 +11,14 @@ windows:
     panes:
       - nvm use 8
       - nvm use 8
-  - name: misc
-    root: ~/notes/
+  - name: tesla
+    root: ~/code/tesla
+  - name: gd
+    root: ~/code/js/global-dashboard
+    layout: even-horizontal
+    panes:
+      - nvm use 8
+      - nvm use 8
   - name: top
     root: ~/
     panes:
