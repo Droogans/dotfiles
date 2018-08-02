@@ -2,7 +2,12 @@
         name = Droogans
         email = droogans@gmail.com
 [color]
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
         ui = true
+        pager = true
 [color "branch"]
         current = cyan
         local = yellow
@@ -42,13 +47,16 @@
         sor = am --resolved
         split = reset HEAD^
         sq = !"git reset --soft ${1-master}; git add -A; git commit;"
-        st = !"git status -sb && git df"
+        st = !"(git status -sb && git diff)"
+        sto = status -sb
         standup = !git lg --since yesterday --author `git config user.email`
         swap = "!git stash; git checkout master; git checkout -b $1; git stash pop;"
         update = "![ `git st | wc -l` -gt 1 ] && echo "Clean working state required." && exit 1; git co master; git fetch --all --prune; git cleanup; [[ `git remote` != *"upstream"* ]] && git purr origin master && exit 0; git purr upstream master; git origin; git co -;"
         upstream = push upstream -q
         use-master = "checkout --ours" # files
         use-branch = "checkout --theirs" # files
+[pager]
+        st = true
 [push]
         default = current
 [core]
