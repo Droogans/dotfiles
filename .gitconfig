@@ -32,9 +32,11 @@
         cp = cherry-pick
         df = diff
         dfc = diff --cached
+        find = !git l --all -p -S # search string
         fp = format-patch
-        lg = log --pretty=tformat:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n
-        lgs = log --pretty=tformat:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all -S
+        history = !git l --all -s -- # filename
+        l = log --pretty=tformat:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+        lg = !git l -n # number of commits
         origin = push origin -q
         pull = pull --rebase
         purr = pull --rebase
