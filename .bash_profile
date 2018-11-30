@@ -9,6 +9,8 @@ export NOEXEC_EXCLUDE="compass"
 export SHELL="/usr/local/bin/bash"
 
 export GOPATH=~/code/go
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
