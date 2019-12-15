@@ -4,6 +4,7 @@
 !.el4r
 !.el4rrc.rb
 !.emacs_bash
+!.gcloud.bash-completion
 !.git-completion.sh
 !.gitconfig
 !.gitignore
@@ -11,6 +12,8 @@
 !.inputrc
 !.irbrc
 !.jscsrc
+!.kubectl.bash-completion
 !.npmrc
-!code/sh/
+!.pass.bash-completion
 !.tmux.conf
+!gcloud_context.py

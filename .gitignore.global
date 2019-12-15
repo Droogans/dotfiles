@@ -1,2 +1,11 @@
 # emacs temporary backup files
 \.#*
+*#*#
+.DS_Store
+*.notes
+*~
+
+# flycheck temporary lint files
+*flycheck_*\.py
+
+.mypy_cache

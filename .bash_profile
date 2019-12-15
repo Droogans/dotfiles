@@ -1,13 +1,28 @@
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+export HISTCONTROL=ignorespace:erasedups
+shopt -s cmdhist
+shopt -s histappend
+
 source ~/.bash_aliases
 source ~/.git-prompt.sh
 source ~/.git-completion.sh
-source /etc/bash_completion.d/password-store
+source ~/.pass.bash-completion
+source ~/.gcloud.bash-completion
+source ~/.kubectl.bash-completion
 
-df -h | grep -e Filesystem -e /dev/sda1 -e /dev/sdc1
+df -h | grep -e Filesystem -e "/$"
 
 export EDITOR=emacs
 export NODE_PATH=/usr/sbin/node
 export NOEXEC_EXCLUDE="compass"
+
+export GOPATH="$HOME/code/go"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -15,11 +30,8 @@ export NVM_DIR="$HOME/.nvm"
 
 
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 shopt -s dotglob
 
@@ -36,7 +48,6 @@ function start_agent {
     ssh-add
 }
 
-# test for identities
 function test_identities {
     # test whether standard identities have been added to the agent already
     ssh-add -l | grep "The agent has no identities" > /dev/null
@@ -67,4 +78,10 @@ else
     else
         start_agent
     fi
+fi
+
+# Emacs tramp fix
+if [[ "$TERM" == "dumb" ]]
+then
+  PS1='$ '
 fi

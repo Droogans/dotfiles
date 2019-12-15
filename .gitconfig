@@ -2,16 +2,19 @@
         name = Droogans
         email = droogans@gmail.com
 [color]
-        diff = auto
-        status = auto
+        diff = always
+        status = always
         branch = auto
+        interactive = auto
+        ui = true
+        pager = true
 [color "branch"]
-        current = cyan
-        local = yellow
+        current = yellow
+        local = dim yellow
         remote = magenta
 [color "diff"]
         meta = yellow
-        frag = white dim
+        frag = dim white
         old = red
         new = cyan
         whitespace = white reverse
@@ -19,34 +22,60 @@
         added = cyan
         changed = red
         untracked = yellow
+        remoteBranch = bold red
 [alias]
         aa = add -A
         ap = apply --check # diff.patch
         br = branch -a --no-merged
         ci = commit
-        cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
         co = checkout
         cp = cherry-pick
         df = diff
         dfc = diff --cached
+        find = !git l --all -p -S # search string
         fp = format-patch
-        lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n
+        history = !git l --all -s -- # filename
+        l = log --pretty=tformat:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+        lg = !git l -n # number of commits
+        lgg = !git l -n 5
         origin = push origin -q
-        pull = pull --rebase
         purr = pull --rebase
-        read = log -1 -p
-        recap = show --pretty="format:" --name-status HEAD
-        rem = remote -v
+        recap = !git diff --stat ${1-HEAD}~1 ${1-HEAD}
+        reverse = "!git show ${1-HEAD^}..${2-HEAD} | git apply --reverse --3way; git reset ."
         rip = commit --amend --no-edit
+        sbt = subtree push --prefix # app|dist origin gh-pages
         so = !git am -3 --signoff < # diff.patch
         sor = am --resolved
         split = reset HEAD^
-        st = status -sb
+        sq = !"git reset --soft ${1}; git add -A; git commit;"
+        st = !"if [ -z $PS1_NO_VERBOSE ]; then cd .; else git status -sb; fi"
+        sto = !git st
         standup = !git lg --since yesterday --author `git config user.email`
-        update = !git fetch --all --prune && git pull --rebase upstream master && git push origin master
+        update = "!git fetch --all --prune; git branch --no-contains HEAD --no-color --merged | xargs -n 1 git branch -d"
         upstream = push upstream -q
+        use-master = "checkout --ours" # files
+        use-branch = "checkout --theirs" # files
+[pager]
+        st = true
+        df = true
+        dfc = true
 [push]
         default = current
+        followTags = true
 [core]
         editor = emacsclient
         excludesfile = ~/.gitignore.global
+[url "https://"]
+        insteadOf = git://
+[filter "lfs"]
+        clean = git-lfs clean %f
+        smudge = git-lfs smudge %f
+        required = true
+[url "https://github.com/"]
+        insteadOf = git://github.com/
+[diff]
+        renameLimit = 9999
+[merge]
+        conflictStyle = diff3
+[reset]
+        quiet = true
