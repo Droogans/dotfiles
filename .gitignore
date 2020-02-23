@@ -17,4 +17,5 @@
 !.pass.bash-completion
 !.tmux.conf
 !.tmux.setup
+!fdiff.py
 !gcloud_context.py
