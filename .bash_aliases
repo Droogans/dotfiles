@@ -186,8 +186,13 @@ function kubn {
   _k8s_new_namespace=
 }
 
-function kub-context { kub config get-contexts $(kub config current-context) --no-headers | awk '{printf $2; if ($5) printf ".%s",$5}'; }
-function gcp-context { python ~/gcloud_context.py $(cat ~/.config/gcloud/active_config); }
+function kub-context {
+    __k8s_context=$(kub config current-context 2>&1 > /dev/null)
+    if [ $? -eq 0 ]; then
+        kub config get-contexts "$__k8s_context" --no-headers | awk '{printf $2; if ($5) printf ".%s",$5}'
+    fi
+}
+function gcp-context { [ -f ~/.config/gcloud/active_config ] && python ~/gcloud_context.py $(cat ~/.config/gcloud/active_config); }
 function gcloudn {
   export _gcloud_current_context="$(cat ~/.config/gcloud/active_config)"
 
