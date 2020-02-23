@@ -120,17 +120,25 @@ function fdiff {
   else
       all_untracked+=$(echo $untracked_dirs | awk '{print $1}')$'\n'
   fi
-  pad_filenames=$(echo "$st" | awk '{ print length + 1 }' | sort -n | tail -1)
-  wrap_pad=$((pad_filenames-63))
-  tracked=$(git diff --stat=$((COLUMNS-wrap_pad)) HEAD | sed '$d' | cut -d "|" -f 2 | tr -s '[:blank:]')
+  pad_filenames=$(echo "$st" | awk '{ print $1 $2 }' | awk '{ print length + 3 }' | sort -r | head -n 1)
+  tracked=$(git diff --stat HEAD | sed '$d' | cut -d "|" -f 2 | tr -s '[:blank:]')
+  all_tracked=""
+  for tracked_file in "$tracked"; do
+      all_tracked+="$tracked_file"$'\n'
+  done
+  all_tracked=$(echo "$all_tracked" | sed '$d')
+
   tracked_counts=$(echo "$tracked" | cut -d " " -f 2)
   pad_linecounts_untracked=$(echo "$all_untracked" | awk '{ print $1 }' | awk '{ print length + 1 }' | sort -r | head -n 1)
   pad_linecounts_tracked=$(echo "$tracked_counts" | awk '{ print length + 1 }' | sort -r | head -n 1)
   pad_linecounts=$(paste -d '\n' <(echo $pad_linecounts_tracked) <(echo $pad_linecounts_untracked) | sort -r | head -n 1)
   paste -d "|" \
-    <(echo "$st" | awk "{printf \"%-${pad_filenames}s\n\", \$0}") \
-    <(if [ -n "$tracked" ]; then
-          printf "%${pad_linecounts}s %s\n" $tracked
+    <(echo "$st" | awk "{ printf \"%-${pad_filenames}s\n\", \$0 }") \
+    <(if [ -n "$all_tracked" ]; then
+          printf "%${pad_linecounts}s %s" "$all_tracked"
+          if [ -n "$untracked" ]; then
+              printf "\n"
+          fi
       fi
       if [ -n "$untracked" ]; then
           printf "%${pad_linecounts}s \033[0;33m+~\033[0m\n" $all_untracked
