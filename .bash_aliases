@@ -85,6 +85,8 @@ PathFull="\W"
 NewLine="\n"
 Jobs="\j"
 
+bind '"\C-l": "clear\n"'
+
 alias less='less -R'
 
 alias ~='cd ~'
@@ -119,7 +121,8 @@ function fdiff {
       all_untracked+=$(echo $untracked_dirs | awk '{print $1}')$'\n'
   fi
   pad_filenames=$(echo "$st" | awk '{ print length + 1 }' | sort -n | tail -1)
-  tracked=$(git diff --stat=$((COLUMNS-pad_filenames)) HEAD | sed '$d' | cut -d "|" -f 2 | tr -s '[:blank:]')
+  wrap_pad=$((pad_filenames-63))
+  tracked=$(git diff --stat=$((COLUMNS-wrap_pad)) HEAD | sed '$d' | cut -d "|" -f 2 | tr -s '[:blank:]')
   tracked_counts=$(echo "$tracked" | cut -d " " -f 2)
   pad_linecounts_untracked=$(echo "$all_untracked" | awk '{ print $1 }' | awk '{ print length + 1 }' | sort -r | head -n 1)
   pad_linecounts_tracked=$(echo "$tracked_counts" | awk '{ print length + 1 }' | sort -r | head -n 1)
@@ -137,22 +140,73 @@ function fdiff {
 
 function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 5 -d ' '); }
 alias kub=kubectl
-function kub-context {
-    current_context=$(kub config current-context 2>&1)
-    if [ $? -eq 0 ]; then
-        kub config get-contexts $current_context --no-headers | awk '{printf $2; if ($5) printf ".%s",$5}';
-    else
-        return 1
+function kubn {
+  # kvaps/kubectl-use/blob/b967f15204b357b71d9792c16d664bb26de57e68/kubectl-use
+  _k8s_current_context=$(kub config get-contexts $(kub config current-context) --no-headers)
+
+  if [ "$1" = "-" ]; then
+      kub config use "$_k8s_prev_context" > /dev/null
+      kub config set-context --current --namespace="$_k8s_prev_namespace" > /dev/null
+  fi
+
+  export _k8s_prev_context="$(echo "$_k8s_current_context" | awk '{ printf $2 }')"
+  export _k8s_prev_namespace="$(echo "$_k8s_current_context" | awk '{ printf $5 }')"
+  _k8s_current_context=
+
+  if [ "$1" = "-" ]; then
+      return 0
+  fi
+
+  for context in $(kub config get-contexts -o name); do
+    if [ "$1" = "$context" ]; then
+      _k8s_new_context="$1"
+      break
     fi
-}
-function gcp-context {
-    active_config=~/.config/gcloud/active_config
-    if [ -f $active_config ]; then
-        python ~/gcloud_context.py $(cat $active_config);
-    else
-        return 1
+  done
+  context=
+
+  if [ -n "$_k8s_new_context" ]; then
+    kub config use "$1"
+    if [ -n "$2" ]; then
+      _k8s_new_namespace="$2"
     fi
+  else
+    if [ -n "$2" ]; then
+      echo "Can not switch context \"$1\"."
+      return 1
+    fi
+    _k8s_new_namespace="$1"
+  fi
+
+  if [ -n "$_k8s_new_namespace" ]; then
+    kub config set-context --current --namespace="$_k8s_new_namespace" > /dev/null
+  fi
+
+  _k8s_new_context=
+  _k8s_new_namespace=
 }
+
+function kub-context { kub config get-contexts $(kub config current-context) --no-headers | awk '{printf $2; if ($5) printf ".%s",$5}'; }
+function gcp-context { python ~/gcloud_context.py $(cat ~/.config/gcloud/active_config); }
+function gcloudn {
+  export _gcloud_current_context="$(cat ~/.config/gcloud/active_config)"
+
+  if [ "$1" = "-" ]; then
+      _suppressed=$(gcloud config configurations activate "$_gcloud_prev_context" 2>&1 > /dev/null)
+      _suppressed=
+  fi
+
+  if [ "$1" = "-" ]; then
+      export _gcloud_prev_context=$_gcloud_current_context
+      return 0
+  fi
+
+  export _gcloud_prev_context="$(cat ~/.config/gcloud/active_config)"
+
+  _suppressed=$(gcloud config configurations activate "$1" 2>&1 > /dev/null)
+  _suppressed=
+}
+
 alias tf=terraform
 alias ls='ls -lh --color=auto'
 alias ll='ls -lAh'
@@ -187,8 +241,9 @@ function e {
 }
 
 kub_prompt() {
-    CONTEXT=$(kub-context);
+    command -v kubectl &>/dev/null
     if [ $? -eq 0 ]; then
+        CONTEXT=`kub-context`;
         if [[ "$CONTEXT" =~ "prod" ]]; then
             echo " ${IRed}k8s:$CONTEXT$Color_Off";
         else
@@ -198,8 +253,9 @@ kub_prompt() {
 }
 
 gcp_prompt() {
-    CONTEXT=$(gcp-context);
+    command -v gcloud &>/dev/null
     if [ $? -eq 0 ]; then
+        CONTEXT=`gcp-context`;
         if [[ "$CONTEXT" =~ "prod" ]]; then
             echo " ${IRed}gcp:$CONTEXT$Color_Off";
         else
