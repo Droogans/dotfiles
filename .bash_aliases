@@ -85,7 +85,7 @@ PathFull="\W"
 NewLine="\n"
 Jobs="\j"
 
-bind '"\C-l": "clear\n"'
+bind '"\C-l": "source ~/.bash_aliases; clear\n"'
 
 alias less='less -R'
 
