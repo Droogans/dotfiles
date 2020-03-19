@@ -85,7 +85,7 @@ PathFull="\W"
 NewLine="\n"
 Jobs="\j"
 
-bind '"\C-l": "source ~/.bash_aliases; clear\n"'
+bind '"\C-l": " source ~/.bash_aliases; history -r; clear\n"'
 
 alias less='less -R'
 
@@ -352,6 +352,7 @@ prompt() {
 # set the last command's return code in the next PS1
 trapDbg() {
    local c="$BASH_COMMAND"
+   history -a
    if [ "$c" != "pc" ] && [ "$c" != "_pyenv_virtualenv_hook" ]; then
        export _cmd="$c"
    fi
