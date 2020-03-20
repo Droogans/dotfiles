@@ -41,6 +41,6 @@ for i, s in enumerate(st):
     except IndexError:
         diff_line = '\x1b[33m±\x1b[m'
 
-    pad_st.append('{:<{}} | {:>{}} {}'.format(s, (st_longest + len(s[0])), diff_stat, pad_counts, diff_line))
+    pad_st.append('{:<{}} | {:>{}} {}'.format(s, (st_longest + len(st_parts[i][0])), diff_stat, pad_counts, diff_line))
 print('\n'.join(pad_st))
 sys.exit(0)
