@@ -3,7 +3,7 @@ shopt -s histappend
 export HISTCONTROL=ignoreboth
 export HISTSIZE=8192
 export HISTFILESIZE=8192
-export HISTIGNORE='ls:bg:fg:history'
+export HISTIGNORE='ls:bg:fg:history:pbc'
 export HISTTIMEFORMAT='%F %T '
 
 source ~/.bash_aliases
