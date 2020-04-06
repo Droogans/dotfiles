@@ -265,6 +265,8 @@ function venv_prompt() {
     venv=''
     if [ -n "$VIRTUAL_ENV" ]; then
         venv=$(basename $(dirname ${VIRTUAL_ENV}))
+    else
+        venv=$(pyenv version-name)
     fi
     [ -n "$venv" ] && echo " ${Purple}venv:$venv$Color_Off"
 }
