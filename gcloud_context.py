@@ -11,7 +11,7 @@ except IndexError:
 try:
     from configparser import ConfigParser
 except ImportError:
-    from ConfigParser import ConfigParser
+    from ConfigParser import RawConfigParser as ConfigParser
 
 try:
     from pathlib import Path
