@@ -3,6 +3,10 @@
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+function scolor() {
+    echo "$1" | sed "s/\\\\\\[//g; s/\\\\\\]//g"
+}
+
 # Reset
 Color_Off="\[\033[0m\]"       # Text Reset
 
