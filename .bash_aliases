@@ -283,6 +283,7 @@ ret_prompt() {
 }
 
 prompt() {
+    _exectime=$(perl -MPOSIX -MTime::HiRes=time -e 'printf "%s (%.3fs)", (strftime "%H:%M:%S", localtime), time - @ARGV[0]' $_cmdtime)
     PRE=""
     FMT=""
     POST=""
@@ -305,7 +306,7 @@ prompt() {
             fi
 
             PRE+="$_returncode_color$(rulem "" "▁")$Color_Off\n"
-            PRE+="$_returncode_color> $IBlue$Time24h$Color_Off\n"
+            PRE+="$_returncode_color> $IBlue$_exectime$Color_Off\n"
             PRE+="$IBlue>$IPurple pwd:$PathShort$Color_Off\n"
             context_prompts=$(gcp_prompt)$(kub_prompt)$(venv_prompt)
             if [ -n "$context_prompts" ]; then
@@ -352,29 +353,30 @@ prompt() {
 # https://stackoverflow.com/a/27452329
 # set the last command's return code in the next PS1
 trapDbg() {
-   local c="$BASH_COMMAND"
-   history -a
-   if [ "$c" != "pc" ] && [ "$c" != "_pyenv_virtualenv_hook" ]; then
-       export _cmd="$c"
-   fi
+    local c="$BASH_COMMAND"
+    history -a
+    if [ "$c" != "pc" ] && [ "$c" != "_pyenv_virtualenv_hook" ]; then
+        export _cmd="$c"
+        export _cmdtime=$(perl -MTime::HiRes=time -e 'printf "%s", time')
+    fi
 }
 
 pc() {
-   local r=$?
-   trap "" DEBUG
-   if [ -n "$_cmd" ]; then
-       export _returncode="$r"
-   else
-       export _returncode=""
-   fi
+    local r=$?
+    trap "" DEBUG
+    if [ -n "$_cmd" ]; then
+        export _returncode="$r"
+    else
+        export _returncode=""
+    fi
 
-   export _returncode_color=$IRed
-   if [ "$_returncode" = "0" ]; then
-       export _returncode_color=$Green
-   fi
-   export _cmd=
-   prompt
-   trap 'trapDbg' DEBUG
+    export _returncode_color=$IRed
+    if [ "$_returncode" = "0" ]; then
+        export _returncode_color=$Green
+    fi
+    export _cmd=
+    prompt
+    trap 'trapDbg' DEBUG
 }
 
 export PROMPT_COMMAND=pc
