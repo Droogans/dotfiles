@@ -273,7 +273,11 @@ function venv_prompt() {
 }
 
 ret_prompt() {
-    echo "$_returncode_color\\\$?$Color_Off=$_returncode: "
+    if [ -z $PS1_NO_VERBOSE ]; then
+        echo "$_returncode_color\\\$?$Color_Off=$_returncode: "
+    else
+        echo "$_returncode_color\\\$$Color_Off: "
+    fi
 }
 
 prompt() {
@@ -319,9 +323,6 @@ prompt() {
                 fi
                 FMT=$(__git_ps1 "$FMT")
             fi
-
-            export LAST_PROMPT="$(ret_prompt)"
-            POST+=$LAST_PROMPT
         else
             # quiet prompt
             PRE+=$IBlue$Time24h$Color_Off
@@ -337,11 +338,10 @@ prompt() {
                 fi
                 FMT=$(__git_ps1 "$FMT")
             fi
-
             POST=" $Yellow$PathShort$Color_Off\n"
-            export LAST_PROMPT="$: "
-            POST+=$LAST_PROMPT
         fi
+        export LAST_PROMPT="$(ret_prompt)"
+        POST+=$LAST_PROMPT
         PS1="$PRE$FMT$POST"
     fi
 }
