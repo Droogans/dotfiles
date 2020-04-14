@@ -239,8 +239,7 @@ function e {
 }
 
 kub_prompt() {
-    command -v kubectl &>/dev/null
-    if [ $? -eq 0 ]; then
+    if command -v kubectl &>/dev/null; then
         CONTEXT=`kub-context`;
         if [[ "$CONTEXT" =~ "prod" ]]; then
             echo " ${IRed}k8s:$CONTEXT$Color_Off";
@@ -251,8 +250,7 @@ kub_prompt() {
 }
 
 gcp_prompt() {
-    command -v gcloud &>/dev/null
-    if [ $? -eq 0 ]; then
+    if command -v gcloud &>/dev/null; then
         CONTEXT=`gcp-context`;
         if [[ "$CONTEXT" =~ "prod" ]]; then
             echo " ${IRed}gcp:$CONTEXT$Color_Off";
