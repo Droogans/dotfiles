@@ -87,6 +87,7 @@ Jobs="\j"
 
 bind '"\C-l": " source ~/.bash_aliases; history -r; clear\n"'
 
+alias ?="echo $?"
 alias less='less -R'
 
 alias ~='cd ~'
