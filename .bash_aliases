@@ -271,7 +271,10 @@ function venv_prompt() {
     if [ -n "$VIRTUAL_ENV" ]; then
         venv=$(basename $(dirname ${VIRTUAL_ENV}))
     else
-        venv=$(pyenv version-name)
+        venv=$(pyenv version-name 2>&1)
+        if [ $? -gt 0 ]; then
+            venv="$IRed$(echo "$venv" | sed -n "s/^pyenv: version \`\(.*\)' is not installed.*$/\1/p")$Color_Off??"
+        fi
     fi
     [ -n "$venv" ] && echo " ${Purple}venv:$venv$Color_Off"
 }
