@@ -118,10 +118,7 @@ function fdiff {
   fi
   if [ $(echo "$untracked_dirs" | wc -l) -gt 0 ]; then
       for dir in $untracked_dirs; do
-          all_untracked+=$(echo "$dir" | xargs -i find {} -name '*' -type f | \
-                               xargs wc -l | sed '$d' | cut -d "/" -f 1 | \
-                               awk '{arr[$2]+=$1} END {for (i in arr) {print i,arr[i]}}' | \
-                               sort | cut -d ' ' -f 2)$'\n'
+          all_untracked+=$(tar -c "$dir" | wc -l)$'\n'
       done
   else
       all_untracked+=$(echo "$untracked_dirs" | awk '{print $1}')$'\n'
