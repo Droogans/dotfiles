@@ -357,7 +357,7 @@ trapDbg() {
     history -a
     if [ "$c" != "pc" ] && [ "$c" != "_pyenv_virtualenv_hook" ]; then
         export _cmd="$c"
-        export _cmdtime=$(perl -MTime::HiRes=time -e 'printf "%s", time')
+        export _cmdtime=$(perl -MTime::HiRes=time -e 'printf "%s", time' &)
     fi
 }
 
