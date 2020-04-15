@@ -102,7 +102,8 @@ alias cp='cp -i'
 alias dc=docker-compose
 alias emacs='emacs --no-splash'
 function fdiff {
-  st=$(git status -s)
+  st_full=$(git status -sb)
+  st=$(echo "$st_full" | sed '1d')
   [ -z "$st" ] && return 0
   untracked=$(echo "$st" | grep "??" | cut -d ' ' -f 2)
   untracked_files=$(echo "$untracked" | grep "[^/]$")
@@ -126,12 +127,16 @@ function fdiff {
       all_untracked+=$(echo "$untracked_dirs" | awk '{print $1}')$'\n'
   fi
 
-  tracked=$(git diff --stat HEAD | sed '$d' | cut -d "|" -f 2 | tr -s '[:blank:]')
   all_tracked=""
-  for tracked_file in "$tracked"; do
-      all_tracked+="$tracked_file"$'\n'
-  done
-  all_tracked=$(echo "$all_tracked" | sed '$d')
+  tracked=
+  if ! echo "$st_full" | head -n 1 | grep "^## No commits yet on\s" 2>&1 >/dev/null; then
+      tracked=$(git diff --stat HEAD | sed '$d' | cut -d "|" -f 2 | tr -s '[:blank:]')
+      for tracked_file in "$tracked"; do
+          all_tracked+="$tracked_file"$'\n'
+      done
+      all_tracked=$(echo "$all_tracked" | sed '$d')
+  fi
+
   python ~/fdiff.py "$st" "$all_tracked" "$all_untracked"
 }
 
@@ -288,23 +293,16 @@ prompt() {
     FMT=""
     POST=""
     inline_status=" "
-
-    function _is_git_dir() {
-        test -n "$(git branch 2> /dev/null)"
-    }
+    _git_dir_info="$(git status -sb --porcelain=2 2>&1)"
+    _git_dir_info_is_repository="1"
+    if echo "$_git_dir_info" | grep "fatal: not a git repository" 2>&1 >/dev/null; then
+       _git_dir_info_is_repository=
+    fi
 
     if [ -z $_returncode ]; then
         PS1=$LAST_PROMPT
     else
         if [ -z $PS1_NO_VERBOSE ]; then
-            # noisy prompt
-            if _is_git_dir; then
-                status=$(git status -sb | head -n 1)
-                if [ "$status" != "${status##*...}" ]; then
-                    inline_status="...${status##*...} "
-                fi
-            fi
-
             PRE+="$_returncode_color$(rulem "" "▁")$Color_Off\n"
             PRE+="$_returncode_color> $IBlue$_exectime$Color_Off\n"
             PRE+="$IBlue>$IPurple pwd:$PathShort$Color_Off\n"
@@ -313,14 +311,43 @@ prompt() {
                 PRE+="$IBlue>$Color_Off$context_prompts\n"
             fi
 
-            if _is_git_dir; then
+            if [ -n "$_git_dir_info_is_repository" ]; then
                 PRE+="$IBlue> "
                 FMT+="${Green}git:%s$Color_Off"
-                POST+="$inline_status\n"
-                $(git status | grep "nothing to commit" > /dev/null 2>&1)
-                if [ $? -eq 0 ]; then
+                _git_status_info_headers=$(echo "$_git_dir_info" | grep "^#\s")
+                _git_nothing_to_commit=
+                if [ "$_git_dir_info" = "$_git_status_info_headers" ]; then
+                    _git_nothing_to_commit="1"
+                fi
+
+                _git_status_info=($(echo "$_git_status_info_headers" | awk '{ print $3 }'))
+                _git_status_info_ref=${_git_status_info[0]}
+                if [ "${_git_status_info[0]}" = "(initial)" ]; then
+                    _git_status_info_initial_commit="1"
+                else
+                    _git_status_info_initial_commit=
+                    _git_status_info_shortsha=$(git rev-parse --short HEAD)
+                fi
+
+                _git_status_info_upstream=${_git_status_info[2]}
+
+                if [ -n "$_git_status_info_initial_commit" ]; then
+                    POST+="@${Yellow}inital$Color_Off"
+                else
+                    if [ -z "$_git_nothing_to_commit" ]; then
+                        POST+="@${Red}$_git_status_info_shortsha$Color_Off"
+                    fi
+                fi
+
+                if [ -n "$_git_status_info_upstream" ]; then
+                    POST+="...$Green$_git_status_info_upstream$Color_Off "
+                fi
+
+                POST+="\n"
+
+                if [ -n "$_git_nothing_to_commit" ] && [ -z "$_git_status_info_initial_commit" ]; then
                     POST+="$(git lg 1 --color)\n$ColorOff"
-                    POST+="$(printf "%$(git rev-parse --short HEAD | wc -c)s" " ")-$(git diff --shortstat HEAD~1 HEAD)\n"
+                    POST+="$(printf "%$(echo "$_git_status_info_shortsha" | wc -c)s" " ")-$(git diff --shortstat HEAD~1 HEAD)\n"
                 else
                     POST+="$(fdiff)\n"
                 fi
@@ -333,7 +360,7 @@ prompt() {
             PRE+=$(kub_prompt)
             PRE+=$(venv_prompt)
 
-            if _is_git_dir; then
+            if [ -n "$_git_dir_info_is_repository" ]; then
                 if git status | grep "nothing to commit" > /dev/null 2>&1; then
                     FMT+="$Green (%s)$Color_Off"
                 else
