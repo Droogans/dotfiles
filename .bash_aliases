@@ -273,7 +273,7 @@ function venv_prompt() {
     else
         venv=$(pyenv version-name 2>&1)
         if [ $? -gt 0 ]; then
-            venv="$IRed$(echo "$venv" | sed -n "s/^pyenv: version \`\(.*\)' is not installed.*$/\1/p")$Color_Off??"
+            venv="$IRed$(echo "$venv" | tail -n 1 | sed -n "s/^pyenv: version \`\(.*\)' is not installed.*$/\1/p")$Color_Off??"
         fi
     fi
     [ -n "$venv" ] && echo " ${Purple}venv:$venv$Color_Off"
@@ -295,17 +295,26 @@ prompt() {
     inline_status=" "
     _git_dir_info="$(git status -sb --porcelain=2 2>&1)"
     _git_dir_info_is_repository="1"
-    if echo "$_git_dir_info" | grep "fatal: not a git repository" 2>&1 >/dev/null; then
+    if echo "$_git_dir_info" | \
+            grep -e "fatal: not a git repository" \
+                 -e "fatal: Unable to read current working directory" \
+                 2>&1 >/dev/null; then
        _git_dir_info_is_repository=
     fi
 
     if [ -z $_returncode ]; then
         PS1=$LAST_PROMPT
     else
+        if [ -d $(pwd) ]; then
+            _path="$PathShort$Color_Off\n"
+        else
+            _path="$Red$PathShort$Color_Off??\n"
+        fi
+
         if [ -z $PS1_NO_VERBOSE ]; then
             PRE+="$_returncode_color$(rulem "" "▁")$Color_Off\n"
             PRE+="$_returncode_color> $IBlue$_exectime$Color_Off\n"
-            PRE+="$IBlue>$IPurple pwd:$PathShort$Color_Off\n"
+            PRE+="$IBlue>$IPurple pwd:$_path"
             context_prompts=$(gcp_prompt)$(kub_prompt)$(venv_prompt)
             if [ -n "$context_prompts" ]; then
                 PRE+="$IBlue>$Color_Off$context_prompts\n"
@@ -368,7 +377,7 @@ prompt() {
                 fi
                 FMT=$(__git_ps1 "$FMT")
             fi
-            POST=" $Yellow$PathShort$Color_Off\n"
+            POST=" $Yellow$_path"
         fi
         export LAST_PROMPT="$(ret_prompt)"
         POST+=$LAST_PROMPT
