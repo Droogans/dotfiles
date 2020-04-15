@@ -191,7 +191,7 @@ function kub-context {
         kub config get-contexts "$__k8s_context" --no-headers | awk '{printf $2; if ($5) printf ".%s",$5}'
     fi
 }
-function gcp-context { [ -f ~/.config/gcloud/active_config ] && python ~/gcloud_context.py $(cat ~/.config/gcloud/active_config); }
+function gcp-context { [ -f ~/.config/gcloud/active_config ] && $CLOUDSDK_PYTHON ~/gcloud_context.py $(cat ~/.config/gcloud/active_config); }
 function gcloudn {
   export _gcloud_current_context="$(cat ~/.config/gcloud/active_config)"
 
