@@ -288,7 +288,7 @@ ret_prompt() {
 }
 
 prompt() {
-    _exectime=$(perl -MPOSIX -MTime::HiRes=time -e 'printf "%s (%.3fs)", (strftime "%H:%M:%S", localtime), time - @ARGV[0]' $_cmdtime)
+    _exectime=$(perl -MPOSIX -MTime::HiRes=time -e 'printf "%s (%.3fs)", (strftime "%H:%M:%S%z", localtime), time - @ARGV[0]' $_cmdtime)
     PRE=""
     FMT=""
     POST=""
