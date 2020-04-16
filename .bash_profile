@@ -13,7 +13,7 @@ source ~/.pass.bash-completion
 source ~/.gcloud.bash-completion
 source ~/.kubectl.bash-completion
 
-df -h | grep -e Filesystem -e "/$"
+df -h | grep -e Filesystem -e "^/dev/"
 
 export EDITOR=emacs
 export NODE_PATH=/usr/sbin/node
