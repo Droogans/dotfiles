@@ -312,7 +312,7 @@ prompt() {
         fi
 
         if [ -z $PS1_NO_VERBOSE ]; then
-            PRE+="$_returncode_color$(rulem "" "▁")$Color_Off\n"
+            PRE+="$_returncode_color$(rulem "" "—")$Color_Off\n"
             PRE+="$_returncode_color> $IBlue$_exectime$Color_Off\n"
             PRE+="$IBlue>$IPurple pwd:$_path"
             context_prompts=$(gcp_prompt)$(kub_prompt)$(venv_prompt)
@@ -344,7 +344,7 @@ prompt() {
                     POST+="@${Yellow}inital$Color_Off"
                 else
                     if [ -z "$_git_nothing_to_commit" ]; then
-                        POST+="@${Red}$_git_status_info_shortsha$Color_Off"
+                        POST+="@${IRed}$_git_status_info_shortsha$Color_Off"
                     fi
                 fi
 
