@@ -32,7 +32,8 @@ export NVM_DIR="$HOME/.nvm"
 
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export CLOUDSDK_PYTHON=/usr/bin/python2.7
+if [ -f "$HOME/.gcloud.bash-completion" ]; then . "$HOME/.gcloud.bash-completion"; fi
 
 shopt -s dotglob
 
