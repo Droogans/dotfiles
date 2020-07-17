@@ -75,6 +75,7 @@ install-dev:
 		lib32readline7 \
 		libbz2-dev \
 		libcurl \
+		libdb++-dev \
 		libevent-dev \
 		libffi-dev \
 		liblzma-dev \
