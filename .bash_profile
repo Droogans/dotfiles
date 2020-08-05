@@ -19,7 +19,9 @@ export EDITOR=emacs
 export NODE_PATH=/usr/sbin/node
 export NOEXEC_EXCLUDE="compass"
 
+export GOROOT="$HOME/go"
 export GOPATH="$HOME/code/go"
+export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
